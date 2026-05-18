@@ -9,6 +9,8 @@ function Projects() {
       mockTitle: 'FACT-AI',
       mockSub: 'reliability: 8.4 / 10',
       stack: ['Python', 'FastAPI', 'ChromaDB', 'NVIDIA NIM', 'Tavily'],
+      demo: 'https://multilingual-misinformation-detection.onrender.com/',
+      github: 'https://github.com/Anonymous-Killer/Multilingual-MIsinformation-Detection',
     },
     {
       id: 'P-02',
@@ -19,6 +21,8 @@ function Projects() {
       mockTitle: 'PITCH_MIRROR',
       mockSub: 'session: 03 · evaluating…',
       stack: ['LLMs', 'Multimodal', 'Python', 'Session State'],
+      demo: 'https://teamnotnull-innovationhacks.onrender.com/',
+      github: 'https://github.com/Mitul9703/TeamNotNull_InnovationHacks',
     },
     {
       id: 'P-03',
@@ -29,17 +33,19 @@ function Projects() {
       mockTitle: 'GAME_PRO',
       mockSub: 'matches scheduled: 47',
       stack: ['LangChain', 'Gemini API', 'Python', 'Agents'],
+      github: 'https://github.com/vikasgowda3007/sunhacks',
     },
     {
-      id: 'P-??',
-      name: 'Coming Soon',
-      tone: 'yellow',
-      subtitle: 'Loading next quest…',
-      blurb: 'New project incoming. Drop in another entry above to extend the wheel — the carousel adapts to any number of cards.',
-      mockTitle: '???',
-      mockSub: 'awaiting input▌',
-      stack: ['TBD'],
-      placeholder: true,
+      id: 'P-04',
+      name: 'Debate AI',
+      tone: 'purple',
+      subtitle: 'Voice-First AI Debate Judge',
+      blurb: 'Full-stack debate platform with deterministic state orchestration. Participants record live arguments via a dynamic voice button; Gemini transcribes each point, NVIDIA NIM scores in real-time, and a final verdict is generated after claim extraction and evidence review.',
+      mockTitle: 'DEBATE_AI',
+      mockSub: 'verdict: loading…',
+      stack: ['FastAPI', 'Next.js', 'Gemini', 'NVIDIA NIM', 'PostgreSQL'],
+      demo: 'https://debate-orchestrator.onrender.com',
+      github: 'https://github.com/Anonymous-Killer/Debate-Orchestrator',
     },
   ];
 
@@ -75,7 +81,7 @@ function Projects() {
           eyebrow="LEVEL 03 · QUEST BOARD"
           eyebrowTone="cyan"
           title="Projects"
-          subtitle="Spin the wheel. Three shipped projects (so far) — more entries loading."
+          subtitle="Spin the wheel. Four shipped projects — each with a live demo."
         />
 
         <div className="wheel">
@@ -129,12 +135,18 @@ function Projects() {
                           {p.stack.map((s) => <TagPill key={s} tone="mute">{s}</TagPill>)}
                         </div>
 
-                        {!p.placeholder && (
-                          <div className="project-card__cta">
-                            <PixelButton size="sm" tone={p.tone} href="#">Case Study →</PixelButton>
-                            <PixelButton size="sm" tone="ghost" href="#">Github</PixelButton>
-                          </div>
-                        )}
+                        <div className="project-card__cta">
+                          {p.demo && (
+                            <PixelButton size="sm" tone={p.tone} href={p.demo} target="_blank" rel="noopener noreferrer">
+                              Load Game ↗
+                            </PixelButton>
+                          )}
+                          {p.github && (
+                            <PixelButton size="sm" tone="ghost" href={p.github} target="_blank" rel="noopener noreferrer">
+                              GitHub ↗
+                            </PixelButton>
+                          )}
+                        </div>
                       </div>
                     </PixelFrame>
                   </div>

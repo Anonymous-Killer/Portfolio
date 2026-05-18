@@ -36,7 +36,7 @@ function Contact() {
               <span style={{ paddingLeft: 16, display: 'inline-block' }}>
                 <span className="key">"email"</span>: <span className="accent">"{email}"</span>,<br/>
                 <span className="key">"phone"</span>: <span className="accent">"480.274.4568"</span>,<br/>
-                <span className="key">"linkedin"</span>: <span className="accent">"linkedin.com/in/ishaan-sahay"</span>,<br/>
+                <span className="key">"linkedin"</span>: <span className="accent">"linkedin.com/in/ishaan-sahay-208064202"</span>,<br/>
                 <span className="key">"location"</span>: <span className="accent">"Tempe, AZ"</span>,<br/>
                 <span className="key">"available"</span>: <span style={{ color: 'var(--neon-green)' }}>true</span><br/>
               </span>
@@ -54,9 +54,9 @@ function Contact() {
           <PixelButton tone="magenta" size="lg" href={`mailto:${email}`}>
             Send Mail →
           </PixelButton>
-          <PixelButton tone="ghost" size="lg" href="https://linkedin.com/in/ishaan-sahay">
+          <a className="pixel-btn pixel-btn--ghost pixel-btn--lg" href="https://www.linkedin.com/in/ishaan-sahay-208064202/" target="_blank" rel="noopener noreferrer">
             LinkedIn ↗
-          </PixelButton>
+          </a>
         </div>
       </div>
     </section>

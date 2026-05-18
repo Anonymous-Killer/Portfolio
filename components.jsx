@@ -14,7 +14,7 @@ function PixelFrame({ tone = 'cyan', interactive = false, children, style, class
   );
 }
 
-function PixelButton({ tone = 'cyan', size = 'md', children, icon, iconRight, onClick, href, type = 'button', style }) {
+function PixelButton({ tone = 'cyan', size = 'md', children, icon, iconRight, onClick, href, type = 'button', style, target, rel }) {
   const cls = `pixel-btn pixel-btn--${tone} pixel-btn--${size}`;
   const inner = (
     <>
@@ -24,7 +24,7 @@ function PixelButton({ tone = 'cyan', size = 'md', children, icon, iconRight, on
     </>
   );
   if (href) {
-    return <a className={cls} href={href} style={style} onClick={onClick}>{inner}</a>;
+    return <a className={cls} href={href} style={style} onClick={onClick} target={target} rel={rel}>{inner}</a>;
   }
   return <button className={cls} type={type} style={style} onClick={onClick}>{inner}</button>;
 }

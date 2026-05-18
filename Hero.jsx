@@ -41,8 +41,8 @@ function Hero() {
             <PixelIcon name="joystick" size={16} tone="cyan" style={{ verticalAlign: 'baseline', marginBottom: '-3px', marginRight: '8px' }} />
             View Projects
           </PixelButton>
-          <PixelButton tone="yellow" size="lg" href="#contact"
-            onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
+          <PixelButton tone="yellow" size="lg" href="#projects"
+            onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>
             Press Start
           </PixelButton>
         </div>
