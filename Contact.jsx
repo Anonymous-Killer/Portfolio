@@ -57,6 +57,9 @@ function Contact() {
           <a className="pixel-btn pixel-btn--ghost pixel-btn--lg" href="https://www.linkedin.com/in/ishaan-sahay-208064202/" target="_blank" rel="noopener noreferrer">
             LinkedIn ↗
           </a>
+          <a className="pixel-btn pixel-btn--ghost pixel-btn--lg" href="https://github.com/Anonymous-Killer" target="_blank" rel="noopener noreferrer">
+            GitHub ↗
+          </a>
         </div>
       </div>
     </section>
