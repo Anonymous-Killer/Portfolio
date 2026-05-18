@@ -1,0 +1,264 @@
+/* =========================================================================
+   ISHAAN SAHAY — ARCADE PORTFOLIO DESIGN SYSTEM
+   colors_and_type.css — base tokens + semantic styles
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ===================== COLOR — RAW PALETTE ===================== */
+  --void:           #05050d;
+  --bg-0:           #0a0a14;
+  --bg-1:           #12122a;
+  --bg-2:           #1a1a3a;
+  --bg-3:           #25254d;
+
+  --fg-0:           #ffffff;
+  --fg-1:           #e8e8ff;
+  --fg-2:           #9999c0;
+  --fg-3:           #5e5e8a;
+  --fg-4:           #3a3a5e;
+
+  /* ===================== NEON ACCENTS ===================== */
+  --neon-cyan:      #00f0ff;
+  --neon-cyan-dim:  #0099aa;
+  --neon-magenta:   #ff2bd6;
+  --neon-magenta-dim: #aa1d8f;
+  --neon-purple:    #b537f2;
+  --neon-yellow:    #ffd23f;
+  --neon-green:     #39ff14;
+  --neon-red:       #ff3864;
+  --neon-orange:    #ff7a1a;
+
+  /* ===================== SEMANTIC COLORS ===================== */
+  --color-bg:           var(--bg-0);
+  --color-surface:      var(--bg-1);
+  --color-surface-hi:   var(--bg-2);
+  --color-text:         var(--fg-1);
+  --color-text-dim:     var(--fg-2);
+  --color-text-mute:    var(--fg-3);
+  --color-border:       #2a2a55;
+  --color-border-hi:    #3a3a7a;
+  --color-link:         var(--neon-cyan);
+  --color-accent:       var(--neon-magenta);
+  --color-success:      var(--neon-green);
+  --color-warning:      var(--neon-yellow);
+  --color-danger:       var(--neon-red);
+
+  /* Glow halos */
+  --glow-cyan:      0 0 12px rgba(0, 240, 255, 0.55), 0 0 32px rgba(0, 240, 255, 0.25);
+  --glow-magenta:   0 0 12px rgba(255, 43, 214, 0.55), 0 0 32px rgba(255, 43, 214, 0.25);
+  --glow-green:     0 0 10px rgba(57, 255, 20, 0.5), 0 0 24px rgba(57, 255, 20, 0.2);
+  --glow-yellow:    0 0 10px rgba(255, 210, 63, 0.5), 0 0 24px rgba(255, 210, 63, 0.2);
+  --glow-soft:      0 0 0 1px rgba(255, 255, 255, 0.04), 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  --text-glow-cyan:    0 0 6px rgba(0, 240, 255, 0.7);
+  --text-glow-magenta: 0 0 6px rgba(255, 43, 214, 0.7);
+  --text-glow-green:   0 0 6px rgba(57, 255, 20, 0.7);
+
+  --grad-sunset:    linear-gradient(180deg, #ff2bd6 0%, #b537f2 45%, #00f0ff 100%);
+  --grad-cabinet:   linear-gradient(180deg, #0a0a14 0%, #12122a 50%, #1a0a2e 100%);
+  --grad-scanline:  repeating-linear-gradient(
+                      to bottom,
+                      rgba(255, 255, 255, 0.025) 0px,
+                      rgba(255, 255, 255, 0.025) 1px,
+                      transparent 1px,
+                      transparent 3px
+                    );
+  --grid-line:      rgba(0, 240, 255, 0.18);
+
+  /* ===================== TYPE — FAMILIES ===================== */
+  --font-pixel:    'Press Start 2P', 'Courier New', monospace;
+  --font-crt:      'VT323', 'Courier New', monospace;
+  --font-mono:     'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  --font-sans:     'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+  /* ===================== TYPE — SCALE ===================== */
+  --fs-xs:    11px;
+  --fs-sm:    13px;
+  --fs-base:  15px;
+  --fs-md:    17px;
+  --fs-lg:    20px;
+  --fs-xl:    24px;
+  --fs-2xl:   32px;
+  --fs-3xl:   44px;
+  --fs-4xl:   64px;
+  --fs-5xl:   96px;
+
+  --lh-tight:   1.1;
+  --lh-snug:    1.3;
+  --lh-normal:  1.55;
+  --lh-loose:   1.75;
+
+  --tracking-tight:   -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.05em;
+  --tracking-wider:   0.12em;
+  --tracking-arcade:  0.18em;
+
+  /* ===================== SPACING / RADII / BORDERS ===================== */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  24px;
+  --sp-6:  32px;
+  --sp-7:  48px;
+  --sp-8:  64px;
+  --sp-9:  96px;
+  --sp-10: 128px;
+
+  --radius-0:    0px;
+  --radius-1:    2px;
+  --radius-2:    4px;
+  --radius-3:    8px;
+  --radius-4:    12px;
+  --radius-pill: 999px;
+
+  --border-thin:    1px solid var(--color-border);
+  --border-strong:  1px solid var(--color-border-hi);
+  --border-neon:    1px solid var(--neon-cyan);
+
+  /* ===================== ELEVATION ===================== */
+  --shadow-1: 0 1px 0 rgba(0, 240, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 2px 0 rgba(0, 240, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.55);
+  --shadow-3: 0 4px 0 rgba(0, 240, 255, 0.1), 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-pixel: 0 4px 0 0 var(--neon-cyan-dim);
+  --shadow-pixel-magenta: 0 4px 0 0 var(--neon-magenta-dim);
+
+  /* ===================== MOTION ===================== */
+  --ease-arcade:    cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-snap:      cubic-bezier(0.6, 0, 0.2, 1);
+  --dur-fast:       120ms;
+  --dur-base:       200ms;
+  --dur-slow:       360ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   ============================================================ */
+
+.h-pixel {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  color: var(--fg-0);
+  text-shadow: var(--text-glow-cyan);
+}
+.h-pixel-lg { font-size: var(--fs-3xl); }
+.h-pixel-xl { font-size: var(--fs-4xl); }
+
+.h1 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-0);
+}
+
+.h2 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+
+.h3 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.h4 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-arcade);
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+}
+.eyebrow-magenta { color: var(--neon-magenta); }
+.eyebrow-green   { color: var(--neon-green); }
+.eyebrow-yellow  { color: var(--neon-yellow); }
+
+.body {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+}
+.body-prose {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--fs-md);
+  line-height: var(--lh-loose);
+  color: var(--fg-1);
+}
+.body-dim  { color: var(--fg-2); }
+.body-mute { color: var(--fg-3); }
+
+.caption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+  line-height: var(--lh-normal);
+}
+
+.crt {
+  font-family: var(--font-crt);
+  font-size: var(--fs-xl);
+  line-height: 1;
+  color: var(--neon-green);
+  text-shadow: var(--text-glow-green);
+  letter-spacing: 0.04em;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: rgba(0, 240, 255, 0.08);
+  color: var(--neon-cyan);
+  padding: 2px 6px;
+  border-radius: var(--radius-1);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.stat {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--fs-3xl);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums;
+  color: var(--neon-cyan);
+  text-shadow: var(--text-glow-cyan);
+}
+
+.link {
+  color: var(--neon-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.4);
+  transition: color var(--dur-fast) var(--ease-arcade),
+              border-color var(--dur-fast) var(--ease-arcade),
+              text-shadow var(--dur-fast) var(--ease-arcade);
+}
+.link:hover {
+  color: var(--fg-0);
+  border-color: var(--fg-0);
+  text-shadow: var(--text-glow-cyan);
+}
