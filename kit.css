@@ -304,7 +304,7 @@ button { font-family: inherit; }
    ========================================================================= */
 .hero { position: relative; overflow: hidden; min-height: 760px; padding: var(--sp-10) 0 var(--sp-9); }
 .hero__inner { position: relative; z-index: 2; text-align: center; }
-.hero__prompt { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--neon-green); letter-spacing: var(--tracking-wide); text-shadow: var(--text-glow-green); margin-bottom: var(--sp-5); }
+.hero__prompt { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--neon-green); letter-spacing: var(--tracking-wide); text-shadow: var(--text-glow-green); margin-top: -40px; margin-bottom: calc(var(--sp-8) + 40px); }
 .hero__title {
   font-family: var(--font-pixel);
   font-size: clamp(28px, 6vw, 64px);
