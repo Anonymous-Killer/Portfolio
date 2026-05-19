@@ -67,7 +67,7 @@ button { font-family: inherit; }
 .bg-sun {
   position: absolute;
   left: 50%;
-  bottom: 38%;
+  bottom: 55%;
   transform: translateX(-50%);
   width: 240px;
   height: 240px;
@@ -334,9 +334,9 @@ button { font-family: inherit; }
 .hero__chips .tag-pill--yellow { background: var(--bg-0); color: var(--neon-yellow); border-color: var(--neon-yellow); box-shadow: 0 0 8px rgba(255, 210, 63, 0.35); }
 .hero__cta { display: flex; gap: var(--sp-4); justify-content: center; flex-wrap: wrap; }
 .hero__stats { display: flex; justify-content: center; gap: var(--sp-7); margin-top: var(--sp-8); flex-wrap: wrap; }
-.hero__stat { text-align: center; }
-.hero__stat-value { font-family: var(--font-mono); font-weight: 700; font-size: var(--fs-2xl); color: var(--neon-cyan); text-shadow: var(--text-glow-cyan); line-height: 1; }
-.hero__stat-label { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--fg-3); margin-top: 6px; }
+.hero__stat { text-align: center; color: var(--neon-cyan); }
+.hero__stat-value { font-family: var(--font-mono); font-weight: 700; font-size: var(--fs-2xl); color: inherit; text-shadow: var(--text-glow-cyan); line-height: 1; }
+.hero__stat-label { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: inherit; margin-top: 6px; }
 
 /* =========================================================================
    ABOUT
@@ -495,7 +495,7 @@ button { font-family: inherit; }
 /* =========================================================================
    CONTACT
    ========================================================================= */
-.contact { text-align: center; }
+.contact { text-align: left; }
 .contact__terminal { max-width: 720px; margin: 0 auto; background: var(--void); border: 1px solid var(--color-border); text-align: left; font-family: var(--font-mono); font-size: var(--fs-sm); }
 .contact__terminal-bar { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: var(--bg-1); border-bottom: 1px solid var(--color-border); }
 .contact__terminal-bar .dot { width: 10px; height: 10px; background: var(--bg-3); }
@@ -528,6 +528,83 @@ button { font-family: inherit; }
   color: var(--fg-3);
 }
 .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
+
+/* =========================================================================
+   MOBILE — 600px and below
+   ========================================================================= */
+@media (max-width: 600px) {
+
+  /* --- Layout --- */
+  .container { padding: 0 var(--sp-3); }
+  .section { padding: var(--sp-7) 0; }
+
+  /* --- Nav --- */
+  .nav { height: 56px; }
+  .nav__brand { font-size: 10px; gap: 8px; }
+  .nav__brand img { width: 26px; height: 26px; }
+  .pixel-btn.nav__cta { display: none; }
+
+  /* --- Hero --- */
+  .hero { min-height: unset; padding: var(--sp-8) 0 var(--sp-7); }
+  .hero__prompt { font-size: 10px; }
+  .hero__chips { gap: 6px; }
+  .hero__subtitle { font-size: 15px; margin-bottom: var(--sp-5); }
+  .hero__cta { flex-direction: column; align-items: center; gap: var(--sp-3); }
+  .hero__cta .pixel-btn { width: 100%; max-width: 280px; justify-content: center; }
+  .hero__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-5) var(--sp-4);
+    margin-top: var(--sp-6);
+  }
+  .hero__stat-value { font-size: var(--fs-xl); }
+
+  /* --- About --- */
+  .about { grid-template-columns: 1fr; gap: var(--sp-5); }
+  .about__card-meta { column-gap: 12px; }
+
+  /* --- Skills --- */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* --- Projects wheel --- */
+  .wheel { grid-template-columns: 36px 1fr 36px; gap: var(--sp-1); }
+  .wheel__nav { width: 36px; height: 60px; font-size: 15px; }
+  .wheel__stage { height: 520px; }
+  .wheel__slot { width: min(300px, 90%); margin-left: calc(min(300px, 90%) / -2); margin-top: -240px; }
+  .project-card__screen { height: 120px; }
+  .project-card__screen-mock { font-size: 20px; }
+  .wheel__hud { gap: var(--sp-3); }
+
+  /* --- Experience --- */
+  .quest-entry { grid-template-columns: 1fr; gap: var(--sp-2); }
+  .quest-entry__date { padding-top: 0; }
+  .quest-entry__title { font-size: var(--fs-base); }
+
+  /* --- Certifications --- */
+  .achievements-grid { grid-template-columns: 1fr; }
+  .achievement__badge { width: 44px; height: 44px; }
+
+  /* --- Contact --- */
+  .contact__terminal { font-size: var(--fs-xs); }
+  .contact__terminal-body { padding: var(--sp-4); overflow-x: auto; }
+  .contact__terminal-body .out { word-break: break-all; }
+  .contact__socials { flex-direction: column; align-items: stretch; }
+  .contact__socials .pixel-btn,
+  .contact__socials a.pixel-btn { justify-content: center; }
+
+  /* --- Full Lore --- */
+  .full-lore__toggle { font-size: var(--fs-xs); padding: 12px var(--sp-4); }
+  .full-lore__inner { padding: var(--sp-4); }
+  .resume-skill-row { grid-template-columns: 1fr; gap: 2px; }
+  .resume-entry { grid-template-columns: 1fr; }
+  .resume-entry__date { text-align: left; }
+
+  /* --- Footer --- */
+  .footer__inner { flex-direction: column; align-items: flex-start; gap: var(--sp-2); }
+
+  /* --- Buttons --- */
+  .pixel-btn--lg { padding: 14px 20px; font-size: var(--fs-sm); }
+}
 
 /* =========================================================================
    FULL LORE — collapsible resume

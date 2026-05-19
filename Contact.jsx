@@ -18,7 +18,7 @@ function Contact() {
           eyebrowTone="magenta"
           title="Insert Coin"
           subtitle="Internships, collaborations, or a quick hello — all welcome."
-          align="center"
+          align="left"
         />
 
         <div className="contact__terminal">
@@ -31,16 +31,14 @@ function Contact() {
             <div className="out" style={{ paddingLeft: 16 }}>Ishaan Sahay · MS Data Science · ASU '27</div>
             <div style={{ height: 8 }} />
             <div><span style={{ color: 'var(--neon-cyan)' }}>$</span> cat contact.json</div>
-            <div className="out" style={{ paddingLeft: 16 }}>
-              {'{'}<br/>
-              <span style={{ paddingLeft: 16, display: 'inline-block' }}>
-                <span className="key">"email"</span>: <span className="accent">"{email}"</span>,<br/>
-                <span className="key">"phone"</span>: <span className="accent">"480.274.4568"</span>,<br/>
-                <span className="key">"linkedin"</span>: <span className="accent">"linkedin.com/in/ishaan-sahay-208064202"</span>,<br/>
-                <span className="key">"location"</span>: <span className="accent">"Tempe, AZ"</span>,<br/>
-                <span className="key">"available"</span>: <span style={{ color: 'var(--neon-green)' }}>true</span><br/>
-              </span>
-              {'}'}
+            <div className="out" style={{ paddingLeft: 16, display: 'flex', flexDirection: 'column' }}>
+              <span>{'{'}</span>
+              <span style={{ paddingLeft: 16 }}><span className="key">"email"</span>: <span className="accent">"{email}"</span>,</span>
+              <span style={{ paddingLeft: 16 }}><span className="key">"phone"</span>: <span className="accent">"480.274.4568"</span>,</span>
+              <span style={{ paddingLeft: 16 }}><span className="key">"linkedin"</span>: <span className="accent">"linkedin.com/in/ishaan-sahay-208064202"</span>,</span>
+              <span style={{ paddingLeft: 16 }}><span className="key">"location"</span>: <span className="accent">"Tempe, AZ"</span>,</span>
+              <span style={{ paddingLeft: 16 }}><span className="key">"available"</span>: <span style={{ color: 'var(--neon-green)' }}>true</span></span>
+              <span>{'}'}</span>
             </div>
             <div style={{ height: 8 }} />
             <div><span style={{ color: 'var(--neon-cyan)' }}>$</span> <BlinkCursor /></div>
