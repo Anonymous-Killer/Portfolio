@@ -13,10 +13,10 @@ function About() {
         <div className="about">
           <div className="about__prose body-prose">
             <p>
-              I'm Ishaan — a Data Science graduate student at Arizona State University, with a B.Tech in Computer Science, AI &amp; Robotics from VIT. I work mostly on <span style={{ color: 'var(--neon-cyan)' }}>NLP and LLM fine-tuning</span>, with detours into deep learning, robotics, and ethical hacking.
+              I'm Ishaan, a Data Science graduate student at Arizona State University, with a B.Tech in Computer Science, AI &amp; Robotics from VIT. I work mostly on <span style={{ color: 'var(--neon-cyan)' }}>NLP and LLM fine-tuning</span>, with detours into deep learning, robotics, and ethical hacking.
             </p>
             <p>
-              At <span style={{ color: 'var(--neon-magenta)' }}>DRDO</span>, I fine-tuned BERT-family models for sentiment analysis and named entity recognition. On the side I build AI backends — misinformation detection, interview simulation, agentic schedulers — that are designed to be transparent rather than impressive.
+              At <span style={{ color: 'var(--neon-magenta)' }}>DRDO</span>, I fine-tuned BERT-family models for sentiment analysis and named entity recognition. On the side I build AI backends, misinformation detection, interview simulation, agentic schedulers, that are designed to be transparent rather than impressive.
             </p>
             <p>
               I'm <span style={{ color: 'var(--neon-green)' }}>looking for Fall 2026 and Summer 2027 internships</span> where I can put Transformer-based models against real problems. If that's you, drop a coin in the contact section below.

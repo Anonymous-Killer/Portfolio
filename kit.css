@@ -197,7 +197,7 @@ button { font-family: inherit; }
 .section-header { margin-bottom: var(--sp-7); }
 .section-header--center { text-align: center; }
 .section-header__title { margin: 8px 0 0 0; }
-.section-header__subtitle { margin: 12px 0 0 0; max-width: 60ch; }
+.section-header__subtitle { margin: 12px 0 0 0; }
 .section-header--center .section-header__subtitle { margin-left: auto; margin-right: auto; }
 
 /* =========================================================================
