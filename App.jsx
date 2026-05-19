@@ -21,14 +21,19 @@ function App() {
   return (
     <div className="scanlines">
       <NavBar active={active} onNav={setActive} />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Certifications />
-      <Contact />
-      <Footer />
+      <div className="page-layout">
+        <ProgressSidebar active={active} />
+        <main className="page-main">
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Certifications />
+          <Contact />
+          <Footer />
+        </main>
+      </div>
     </div>
   );
 }

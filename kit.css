@@ -422,7 +422,7 @@ button { font-family: inherit; }
   .wheel { grid-template-columns: 44px 1fr 44px; gap: var(--sp-2); }
   .wheel__nav { width: 44px; height: 72px; font-size: 18px; }
   .wheel__stage { height: 560px; }
-  .wheel__hint { display: none; }
+
 }
 @media (prefers-reduced-motion: reduce) {
   .wheel__slot { transition: opacity 200ms linear; }
@@ -566,14 +566,23 @@ button { font-family: inherit; }
   /* --- Skills --- */
   .skills-grid { grid-template-columns: 1fr; }
 
-  /* --- Projects wheel --- */
-  .wheel { grid-template-columns: 36px 1fr 36px; gap: var(--sp-1); }
-  .wheel__nav { width: 36px; height: 60px; font-size: 15px; }
-  .wheel__stage { height: 520px; }
-  .wheel__slot { width: min(300px, 90%); margin-left: calc(min(300px, 90%) / -2); margin-top: -240px; }
-  .project-card__screen { height: 120px; }
-  .project-card__screen-mock { font-size: 20px; }
-  .wheel__hud { gap: var(--sp-3); }
+  /* --- Projects wheel — flat card on mobile (no 3D) --- */
+  .wheel { grid-template-columns: 36px 1fr 36px; gap: var(--sp-1); align-items: start; }
+  .wheel__nav { width: 36px; height: 56px; font-size: 15px; margin-top: var(--sp-4); }
+  .wheel__stage { height: auto; overflow: visible; perspective: none; }
+  .wheel__track { transform-style: flat; height: auto; }
+  .wheel__slot {
+    position: static;
+    width: 100%;
+    margin: 0;
+    transform: none !important;
+    opacity: 1 !important;
+    display: none;
+    pointer-events: auto !important;
+  }
+  .wheel__slot.is-active { display: block; }
+  .project-card__screen { height: 110px; }
+  .project-card__screen-mock { font-size: 18px; }
 
   /* --- Experience --- */
   .quest-entry { grid-template-columns: 1fr; gap: var(--sp-2); }
@@ -689,4 +698,269 @@ button { font-family: inherit; }
   .resume-entry { grid-template-columns: 1fr; }
   .resume-entry__date { text-align: left; }
   .resume-skill-row { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* =========================================================================
+   PAGE LAYOUT — sidebar + main
+   ========================================================================= */
+.page-layout {
+  display: flex;
+  align-items: stretch;
+}
+
+.page-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================================================================
+   PROGRESS SIDEBAR
+   ========================================================================= */
+.prog-sidebar {
+  width: 188px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--sp-5) var(--sp-4) var(--sp-5) var(--sp-4);
+  border-right: 1px solid var(--color-border);
+  background: rgba(10, 10, 20, 0.5);
+  overflow: hidden;        /* clips item-text as sidebar narrows     */
+  gap: 0;
+  /* Smooth collapse animation */
+  transition: width 300ms var(--ease-arcade), padding-left 300ms var(--ease-arcade), padding-right 300ms var(--ease-arcade);
+}
+
+/* ── Collapsed state ── */
+/*   44px width keeps the dot (8px) + segment visually centered.    */
+/*   padding-left:12px → dot center at 16px; seg margin-left:3px   */
+/*   → seg center at 16px too. Pixel-perfect alignment.             */
+.prog-sidebar.is-collapsed {
+  width: 44px;
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+/* Hidden below 1100px — single-column layout kicks in */
+@media (max-width: 1100px) {
+  .prog-sidebar  { display: none; }
+  .page-layout   { display: block; }
+}
+
+/* ── Toggle button ── */
+.prog-sidebar__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  padding: 0 0 8px 0;
+  margin-bottom: var(--sp-3);
+  color: var(--fg-3);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease-arcade),
+              border-color var(--dur-fast) var(--ease-arcade);
+  flex-shrink: 0;
+}
+.prog-sidebar__toggle:hover { color: var(--neon-cyan); border-color: rgba(0,240,255,0.3); }
+.prog-sidebar__toggle-hint  { white-space: nowrap; transition: opacity 200ms; }
+.prog-sidebar__toggle-arrow { flex-shrink: 0; margin-left: 6px; font-size: 10px; }
+
+/* Hint text fades out when sidebar narrows (clipped by overflow:hidden anyway) */
+.prog-sidebar.is-collapsed .prog-sidebar__toggle-hint { opacity: 0; }
+
+/* ── Loading block (collapses vertically) ── */
+.prog-sidebar__loading-block {
+  overflow: hidden;
+  max-height: 120px;
+  opacity: 1;
+  flex-shrink: 0;
+  transition: max-height 300ms var(--ease-arcade), opacity 200ms var(--ease-arcade);
+}
+.prog-sidebar.is-collapsed .prog-sidebar__loading-block {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Header ── */
+.prog-sidebar__hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.prog-sidebar__hdr-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.prog-sidebar__hdr-pct {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--neon-cyan);
+  text-shadow: var(--text-glow-cyan);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Pixel loading bar ── */
+.prog-sidebar__loadbar {
+  position: relative;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.prog-sidebar__loadbar-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+  transition: width 500ms var(--ease-arcade);
+}
+
+/* Chunked pixel grid over the fill */
+.prog-sidebar__loadbar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0px, transparent 8px,
+    rgba(0, 0, 0, 0.35) 8px, rgba(0, 0, 0, 0.35) 10px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ASCII-style bar under the graphic bar */
+.prog-sidebar__loadbar-ascii {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--fg-3);
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+  margin-bottom: var(--sp-4);
+  white-space: nowrap;
+}
+
+/* ── Section nav ── */
+.prog-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Item button */
+.prog-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 3px 0;
+  text-align: left;
+  color: var(--fg-3);
+  transition: color var(--dur-fast) var(--ease-arcade);
+  width: 100%;
+}
+
+.prog-sidebar__item:hover          { color: var(--fg-1); }
+.prog-sidebar__item.is-done        { color: var(--fg-2); }
+.prog-sidebar__item.is-active      { color: var(--neon-cyan); }
+
+/* Dot */
+.prog-sidebar__dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border: 1.5px solid currentColor;
+  background: var(--bg-0);
+  transition: background var(--dur-fast) var(--ease-arcade),
+              border-color var(--dur-fast) var(--ease-arcade),
+              box-shadow var(--dur-fast) var(--ease-arcade);
+}
+
+.prog-sidebar__item.is-done .prog-sidebar__dot {
+  background: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 5px rgba(0, 240, 255, 0.55);
+}
+
+.prog-sidebar__item.is-active .prog-sidebar__dot {
+  background: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  animation: dot-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(0, 240, 255, 0.7); }
+  50%       { box-shadow: 0 0 14px rgba(0, 240, 255, 1), 0 0 20px rgba(0, 240, 255, 0.4); }
+}
+
+/* Item text stack */
+.prog-sidebar__item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.prog-sidebar__lvnum {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  line-height: 1;
+}
+
+.prog-sidebar__item.is-active .prog-sidebar__lvnum { color: rgba(0, 240, 255, 0.55); }
+
+.prog-sidebar__lbl {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: currentColor;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Connector segment between dots */
+.prog-sidebar__seg {
+  /* Align center of this 2px strip under center of 8px dot */
+  /* dot center = 4px; strip half-width = 1px; margin = 3px  */
+  margin-left: 3px;
+  width: 2px;
+  height: 22px;
+  background: var(--color-border);
+  flex-shrink: 0;
+  transition: background 400ms var(--ease-arcade),
+              box-shadow  400ms var(--ease-arcade);
+}
+
+.prog-sidebar__seg.is-done {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
 }

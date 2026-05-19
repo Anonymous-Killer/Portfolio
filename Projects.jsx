@@ -50,10 +50,29 @@ function Projects() {
   ];
 
   const [index, setIndex] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
+  const pauseTimer = React.useRef(null);
   const total = projects.length;
-  const prev = () => setIndex((i) => (i - 1 + total) % total);
-  const next = () => setIndex((i) => (i + 1) % total);
 
+  const prev = () => setIndex(i => (i - 1 + total) % total);
+  const next = () => setIndex(i => (i + 1) % total);
+
+  // Auto-rotate every 7 s; resets whenever index changes so manual nav
+  // always gives a fresh 7 s window before the next auto-advance.
+  React.useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setIndex(i => (i + 1) % total), 7000);
+    return () => clearInterval(id);
+  }, [paused, index, total]);
+
+  // Pause for 1 minute when a card is clicked
+  const handleCardClick = () => {
+    setPaused(true);
+    if (pauseTimer.current) clearTimeout(pauseTimer.current);
+    pauseTimer.current = setTimeout(() => setPaused(false), 60_000);
+  };
+
+  // Keyboard nav (arrow keys while projects section is in view)
   React.useEffect(() => {
     const onKey = (e) => {
       const el = document.getElementById('projects');
@@ -107,7 +126,10 @@ function Projects() {
                       zIndex: isActive ? 3 : isAdjacent ? 2 : 1,
                       pointerEvents: isActive ? 'auto' : 'none',
                     }}
-                    onClick={() => !isActive && setIndex(i)}
+                    onClick={() => {
+                      if (!isActive) setIndex(i);
+                      handleCardClick();
+                    }}
                   >
                     <PixelFrame tone={p.tone}>
                       <div className="project-card">
@@ -132,7 +154,7 @@ function Projects() {
                         <p className="project-card__blurb">{p.blurb}</p>
 
                         <div className="project-card__chips">
-                          {p.stack.map((s) => <TagPill key={s} tone="mute">{s}</TagPill>)}
+                          {p.stack.map(s => <TagPill key={s} tone="mute">{s}</TagPill>)}
                         </div>
 
                         <div className="project-card__cta">
@@ -158,26 +180,6 @@ function Projects() {
           <button className="wheel__nav wheel__nav--next" onClick={next} aria-label="Next project">
             <span className="wheel__arrow">▶</span>
           </button>
-        </div>
-
-        <div className="wheel__hud">
-          <div className="wheel__counter">
-            <span className="wheel__counter-current">{String(index + 1).padStart(2, '0')}</span>
-            <span className="wheel__counter-sep">/</span>
-            <span className="wheel__counter-total">{String(total).padStart(2, '0')}</span>
-          </div>
-          <div className="wheel__dots" role="tablist">
-            {projects.map((p, i) => (
-              <button
-                key={i}
-                className={`wheel__dot ${i === index ? 'is-on' : ''}`}
-                onClick={() => setIndex(i)}
-                aria-label={`Go to ${p.name}`}
-                aria-current={i === index}
-              />
-            ))}
-          </div>
-          <div className="wheel__hint">◀ ▶ &nbsp;TO SCROLL</div>
         </div>
       </div>
     </section>
