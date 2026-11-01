@@ -62,7 +62,7 @@ function About() {
               <div>
                 <h3 className="resume-section__heading">Summary</h3>
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-sm)', color: 'var(--fg-2)', lineHeight: 'var(--lh-normal)', margin: 0 }}>
-                  Data Science graduate student specializing in Data Science and Robotics, with experience in fine-tuning large language models for various NLP tasks. Proficient in Python, C++, and leading machine learning libraries. Certified Ethical Hacker with a strong foundation in cybersecurity and robotics. Seeking Fall 2026 and Summer 2027 internship opportunities to apply Transformer-based models and similar algorithms to practical challenges.
+                  Data Science graduate student specializing in Data Science and Robotics, with experience in fine-tuning large language models for various NLP tasks. Proficient in Python, C++, and leading machine learning libraries. Certified Ethical Hacker with a strong foundation in cybersecurity and robotics. Looking for opportunities during the Summer of 2027 to apply applications of various Transformer based models and similar algorithms to practical challenges.
                 </p>
               </div>
 
@@ -89,6 +89,10 @@ function About() {
                 <h3 className="resume-section__heading">Technical Skills &amp; Certifications</h3>
                 <div className="resume-skills">
                   <div className="resume-skill-row">
+                    <div className="resume-skill-row__label">Data Analysis &amp; Statistics</div>
+                    <div className="resume-skill-row__val">JMP, Microsoft Power BI, MATLAB, R</div>
+                  </div>
+                  <div className="resume-skill-row">
                     <div className="resume-skill-row__label">AI / ML</div>
                     <div className="resume-skill-row__val">LLM Fine-Tuning, Deep Learning, TensorFlow, CNN, RNN, DBN, MLP</div>
                   </div>
@@ -97,18 +101,14 @@ function About() {
                     <div className="resume-skill-row__val">Python, MySQL, C, C++</div>
                   </div>
                   <div className="resume-skill-row">
-                    <div className="resume-skill-row__label">Data Analysis</div>
-                    <div className="resume-skill-row__val">JMP, Microsoft Power BI, MATLAB, R</div>
-                  </div>
-                  <div className="resume-skill-row">
                     <div className="resume-skill-row__label">Certifications</div>
                     <div className="resume-skill-row__val">
                       <span style={{ color: 'var(--neon-magenta)' }}>Certified Ethical Hacker</span> — EC-Council · May 2023
                     </div>
                   </div>
                   <div className="resume-skill-row">
-                    <div className="resume-skill-row__label">Additional</div>
-                    <div className="resume-skill-row__val">Meta Data Analyst · Microsoft Power BI Data Analyst · Cisco Packet Tracer · Kaggle (Python, Pandas, Intro to ML) · Goethe-Zertifikat A2</div>
+                    <div className="resume-skill-row__label">Additional Certs</div>
+                    <div className="resume-skill-row__val">Meta Data Analyst, Microsoft Power BI Data Analyst, Cisco Packet Tracer, Kaggle (Python, Pandas, Intro to ML), Goethe-Zertifikat A2 (German Language)</div>
                   </div>
                 </div>
               </div>
@@ -117,12 +117,12 @@ function About() {
               <div>
                 <h3 className="resume-section__heading">Professional Experience</h3>
                 <div className="resume-entry">
-                  <div className="resume-entry__title">Data Science Intern — <span style={{ color: 'var(--neon-cyan)' }}>DRDO</span></div>
+                  <div className="resume-entry__title"><span style={{ color: 'var(--neon-cyan)' }}>DRDO</span>: Data Science Internship</div>
                   <div className="resume-entry__date">Jan 2024 – Jun 2024</div>
                   <ul className="resume-bullets">
-                    <li><span>Fine-tuned Large Language Models for NLP tasks — Sentiment Analysis and Named Entity Recognition.</span></li>
+                    <li><span>Fine-tuned Large Language Models for NLP tasks like Sentiment Analysis and Named Entity Recognition.</span></li>
                     <li><span>Conducted comparative study on BERT-based models for sentiment classification.</span></li>
-                    <li><span>Explored various Generative AI tools and evaluation metrics in a professional research setting.</span></li>
+                    <li><span>Used and explored various Generative AI tools and evaluation metrics in a professional setting.</span></li>
                   </ul>
                 </div>
               </div>
@@ -134,24 +134,25 @@ function About() {
                   <div className="resume-entry__title">FactAI — Multilingual Misinformation Detection</div>
                   <ul className="resume-bullets">
                     <li><span>Built an AI backend for detecting misinformation in multilingual news headlines, generating a 1–10 reliability score using evidence-based verification.</span></li>
-                    <li><span>Designed an end-to-end pipeline: language detection → claim normalization → evidence retrieval → deterministic scoring for explainability and reduced hallucination.</span></li>
+                    <li><span>Designed an end-to-end pipeline including language detection, claim normalization, evidence retrieval, and deterministic scoring for explainability and reduced hallucination.</span></li>
                     <li><span>Integrated Google Fact Check &amp; Tavily APIs with NVIDIA NIM for orchestration, query planning, and evidence summarization.</span></li>
-                    <li><span>Built with Python, FastAPI, and ChromaDB; outputs structured JSON (classification, confidence, reasoning, uncertainty).</span></li>
+                    <li><span>Developed scalable services using Python, FastAPI, and ChromaDB, delivering structured JSON outputs (classification, confidence, reasoning, uncertainty) for transparent and interpretable results.</span></li>
                   </ul>
                 </div>
                 <div className="resume-entry">
                   <div className="resume-entry__title">Pitch Mirror — AI-Driven Interview Simulation</div>
                   <ul className="resume-bullets">
                     <li><span>Built core flow and decision logic for role-specific AI agents (recruiter, investor, coding interviewer) to simulate interviews and pitch scenarios using LLMs and multimodal context.</span></li>
-                    <li><span>Implemented backend orchestration and session state handling for thread-based progression, context memory, and post-session evaluation.</span></li>
-                    <li><span>Integrated document uploads, external research, and real-time interactions for an adaptive, evaluation-aware practice environment.</span></li>
+                    <li><span>Implemented backend orchestration and session state handling for thread-based progression, context memory, and post-session evaluation across sessions.</span></li>
+                    <li><span>Integrated document uploads, external research, and real-time interactions to create an adaptive, evaluation-aware practice environment.</span></li>
                   </ul>
                 </div>
                 <div className="resume-entry">
                   <div className="resume-entry__title">GamePro — Automated Sports Match Scheduler</div>
                   <ul className="resume-bullets">
-                    <li><span>Designed and implemented agentic AI modules for autonomous task execution and decision-making workflows.</span></li>
-                    <li><span>AI agent logic built with LangChain and the Gemini API; deployed for college-setting match scheduling.</span></li>
+                    <li><span>Designed and implemented agentic AI modules to enable autonomous task execution and decision-making workflows, enhancing the project with intelligent, self-directed system capabilities.</span></li>
+                    <li><span>The AI agent logic was created using LangChain along with the Gemini API.</span></li>
+                    <li><span>Platform was created for use at a college setting making the student's life more convenient.</span></li>
                   </ul>
                 </div>
               </div>
@@ -161,10 +162,9 @@ function About() {
                 <h3 className="resume-section__heading">Activities</h3>
                 <div className="resume-entry">
                   <div className="resume-entry__title">Hackathons</div>
-                  <ul className="resume-bullets">
-                    <li><span>Innovation Hacks (ASU × MLH) — <span style={{ color: 'var(--neon-yellow)' }}>3rd Place</span> for Pitch Mirror.</span></li>
-                    <li><span>Sunhacks Hackathon participant.</span></li>
-                  </ul>
+                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-sm)', color: 'var(--fg-2)', lineHeight: 'var(--lh-normal)', margin: '8px 0 0' }}>
+                    Participated in the Sunhacks Hackathon and Innovation Hacks. Got the <span style={{ color: 'var(--neon-yellow)' }}>3rd prize</span> at Innovation Hacks.
+                  </p>
                 </div>
               </div>
 
